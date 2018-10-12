@@ -7,6 +7,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//Commented out the two dependencies since we're
+//defining all our views directly in app.js
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -41,4 +43,17 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
+//When users sends an HTTP GET request to /, index.ejs view is rendered
+app.get("/", function (req, res) {
+  res.render("index");
+});
+
+app.get("/searching", function (req, res) {
+  res.send("wheeee");
+});
+
+// Starts the app on port 3000
+app.listen(3000);
+
 module.exports = app;
+
